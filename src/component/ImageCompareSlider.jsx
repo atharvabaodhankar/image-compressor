@@ -46,14 +46,20 @@ const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
       onMouseLeave={() => setSliderPosition(50)} // Reset on mouse leave
       onTouchEnd={() => setSliderPosition(50)} // Reset on touch end
     >
-      <img
-        src={modifiedImageUrl}
-        alt="Compressed"
-        className="absolute inset-0 w-full h-full object-contain"
-      />
-      <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md text-sm font-semibold">
-        Compressed
+      <div
+        className="absolute inset-0 w-full h-full overflow-hidden"
+        style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
+      >
+        <img
+          src={modifiedImageUrl}
+          alt="Compressed"
+          className="absolute inset-0 w-full h-full object-contain"
+        />
+        <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md text-sm font-semibold">
+          Compressed
+        </div>
       </div>
+
       <div
         className="absolute inset-0 w-full h-full overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
@@ -63,9 +69,9 @@ const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
           alt="Original"
           className="absolute inset-0 w-full h-full object-contain"
         />
-      </div>
-      <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md text-sm font-semibold">
-        Original
+        <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md text-sm font-semibold">
+          Original
+        </div>
       </div>
       <div
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-10 transform -translate-x-1/2 group-hover:bg-blue-500 transition-colors duration-200"
