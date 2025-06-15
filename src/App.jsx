@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import imageCompression from "browser-image-compression";
 import { removeBackground } from "@imgly/background-removal";
+import { applySharpen } from "./utils/imageProcessing";
 import ImageCompareSlider from "./component/ImageCompareSlider";
 
 
@@ -45,8 +46,14 @@ function App() {
       };
 
       const compressed = await imageCompression(originalFile, options);
-      setCompressedFile(compressed);
-      setCompressedUrl(URL.createObjectURL(compressed));
+
+      // Apply sharpening
+      const imageBitmap = await createImageBitmap(compressed);
+      const sharpenedBlob = await applySharpen(imageBitmap);
+      const sharpenedFile = new File([sharpenedBlob], compressed.name, { type: sharpenedBlob.type });
+
+      setCompressedFile(sharpenedFile);
+      setCompressedUrl(URL.createObjectURL(sharpenedFile));
     } catch (error) {
       console.error("Compression error:", error);
     }
