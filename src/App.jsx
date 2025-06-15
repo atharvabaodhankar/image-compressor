@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import imageCompression from "browser-image-compression";
 import { removeBackground } from "@imgly/background-removal";
+import ImageCompareSlider from "./component/ImageCompareSlider";
 
 
 function App() {
@@ -147,6 +148,22 @@ function App() {
             >
               Download PNG
             </a>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-10 flex flex-wrap gap-8 justify-center w-full">
+        {compressedUrl && previewUrl && (
+          <div className="text-center w-full">
+            <h2 className="text-xl font-semibold mb-2">Compressed Comparison</h2>
+            <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={compressedUrl} />
+          </div>
+        )}
+
+        {bgRemovedUrl && previewUrl && (
+          <div className="text-center w-full">
+            <h2 className="text-xl font-semibold mb-2">Background Removal Comparison</h2>
+            <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={bgRemovedUrl} />
           </div>
         )}
       </div>
