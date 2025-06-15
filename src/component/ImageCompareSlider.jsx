@@ -47,7 +47,7 @@ const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
       onTouchEnd={() => setSliderPosition(50)} // Reset on touch end
     >
       <img
-        src={originalImageUrl}
+        src={modifiedImageUrl}
         alt="Original"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -56,7 +56,7 @@ const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
         <img
-          src={modifiedImageUrl}
+          src={originalImageUrl}
           alt="Modified"
           className="absolute inset-0 w-full h-full object-cover"
         />

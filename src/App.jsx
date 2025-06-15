@@ -154,14 +154,14 @@ function App() {
 
       <div className="mt-10 flex flex-wrap gap-8 justify-center w-full">
         {compressedUrl && previewUrl && (
-          <div className="text-center w-full">
+          <div className="text-center w-full mx-auto flex justify-center flex-col items-center">
             <h2 className="text-xl font-semibold mb-2">Compressed Comparison</h2>
             <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={compressedUrl} />
           </div>
         )}
 
         {bgRemovedUrl && previewUrl && (
-          <div className="text-center w-full">
+          <div className="text-center w-full mx-auto flex justify-center flex-col items-center">
             <h2 className="text-xl font-semibold mb-2">Background Removal Comparison</h2>
             <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={bgRemovedUrl} />
           </div>
