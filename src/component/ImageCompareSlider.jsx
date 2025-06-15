@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
+const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl, modifiedLabelText = 'Compressed' }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const sliderRef = useRef(null);
 
@@ -56,7 +56,7 @@ const ImageCompareSlider = ({ originalImageUrl, modifiedImageUrl }) => {
           className="absolute inset-0 w-full h-full object-contain"
         />
         <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md text-sm font-semibold">
-          Compressed
+          {modifiedLabelText}
         </div>
       </div>
 

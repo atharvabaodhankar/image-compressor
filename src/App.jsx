@@ -170,7 +170,7 @@ function App() {
         {bgRemovedUrl && previewUrl && (
           <div className="text-center w-full mx-auto flex justify-center flex-col items-center">
             <h2 className="text-xl font-semibold mb-2">Background Removal Comparison</h2>
-            <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={bgRemovedUrl} />
+            <ImageCompareSlider originalImageUrl={previewUrl} modifiedImageUrl={bgRemovedUrl} modifiedLabelText="No Background" />
           </div>
         )}
       </div>
