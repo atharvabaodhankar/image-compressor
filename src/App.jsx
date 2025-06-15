@@ -8,7 +8,7 @@ function App() {
   const [compressedFile, setCompressedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [compressedUrl, setCompressedUrl] = useState(null);
-  const [quality, setQuality] = useState(1);
+  const [compressionPercentage, setCompressionPercentage] = useState(0); // 0% compression initially
   const [bgRemovedUrl, setBgRemovedUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,8 +29,16 @@ function App() {
     if (!originalFile) return;
     setLoading(true);
     try {
+      const originalSizeMB = originalFile.size / (1024 * 1024);
+      const minTargetSizeMB = 0.01; // Smallest possible target size for max compression
+
+      // Calculate target maxSizeMB based on compressionPercentage
+      // 0% compression -> originalSizeMB
+      // 100% compression -> minTargetSizeMB
+      const calculatedMaxSizeMB = originalSizeMB - (originalSizeMB - minTargetSizeMB) * (compressionPercentage / 100);
+
       const options = {
-        maxSizeMB: quality,
+        maxSizeMB: Math.max(calculatedMaxSizeMB, minTargetSizeMB), // Ensure it doesn't go below minTargetSizeMB
         maxWidthOrHeight: 1920,
         useWebWorker: true,
       };
@@ -72,14 +80,14 @@ function App() {
         />
 
         <div>
-          <label className="block mb-1 font-medium">Compression Quality (Max MB): {quality}</label>
+          <label className="block mb-1 font-medium">Compression Level: {compressionPercentage}%</label>
           <input
             type="range"
-            min="0.1"
-            max="5"
-            step="0.1"
-            value={quality}
-            onChange={(e) => setQuality(parseFloat(e.target.value))}
+            min="0"
+            max="100"
+            step="1"
+            value={compressionPercentage}
+            onChange={(e) => setCompressionPercentage(parseFloat(e.target.value))}
             className="w-full"
           />
         </div>
