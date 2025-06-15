@@ -1,12 +1,87 @@
-# React + Vite
+# # Image Compressor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple web-based image compressor application built with React. It allows users to upload images, compress them, and compare the original and compressed images side-by-side.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Image Upload**: Easily upload images for compression.
+- **Image Compression**: Compress images to reduce file size.
+- **Side-by-Side Comparison**: Compare the original and compressed images visually.
+- **Download Compressed Image**: Download the compressed image.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool that provides a lightning-fast development experience.
+- **HTML Canvas API**: Used for image manipulation and compression.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+
+## Getting Started
+
+Follow these steps to get the project up and running on your local machine.
+
+### Prerequisites
+
+Make sure you have Node.js and npm (or yarn) installed.
+
+- Node.js (v14 or higher)
+- npm (v6 or higher) or Yarn (v1.22 or higher)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/atharvabaodhankar/image-compressor.git
+   cd image-compressor
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the Application
+
+To start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
+
+## Project Structure
+
+```
+image-compressor/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   └── ImageCompareSlider.jsx
+│   ├── utils/
+│   │   └── imageProcessing.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE). (Note: A LICENSE file is not included in the current project structure, but it's good practice to add one.)
